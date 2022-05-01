@@ -1,0 +1,153 @@
+﻿@model IEnumerable<News.Models.SubmissionModels>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<!-- Page breadcrumb -->
+<section id="mu-page-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-page-breadcrumb-area">
+                    <h2>Submission</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">Submission</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End breadcrumb -->
+<section id="mu-course-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-course-content-area">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <!-- start course content container -->
+                            <div class="mu-course-container mu-blog-archive">
+                                <div class="row">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Submission Name</th>
+                                                <th scope="col">Start Time</th>
+                                                <th scope="col">Due Time</th>
+                                                <th scope="col">Status Block</th>
+                                                <th scope="col">View Idea </th>
+                                                <th scope="col"> Add Idea</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.submission_Name</td>
+                                                    <td>@item.submission_StartTime</td>
+                                                    <td>@item.submission_DueTime</td>
+                                                    <td>@item.Block</td>
+                                                    <td>
+                                                        <a href="/blogarchive?submissionId=@item.submission_Id">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        @if (item.Block == true)
+                                                        {
+
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                                                            </svg>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <a id="a-@item.submission_Id" href="/createiead?submissionId=@item.submission_Id">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                                                                </svg>
+                                                            </a>
+                                                        }
+                                                    </td>
+                                                </tr>
+
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+                            </div>
+                            <!-- end course content container -->
+                            <!-- start course pagination -->
+                            <!-- end course pagination -->
+                        </div>
+                        <div class="col-md-3">
+                            <!-- start sidebar -->
+                            <aside class="mu-sidebar">
+
+                                <!-- start single sidebar -->
+                                <div class="mu-single-sidebar">
+                                    <h3>Popular News</h3>
+                                    <div class="mu-sidebar-popular-courses">
+                                        @{
+                                            int iPopular = 0;
+                                            foreach (var item in ViewBag.IdeaList)
+                                            {
+                                                if (iPopular <3)
+                                                {
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <a href="blogsingle?id=@item.idea_Id">
+                                                                <img class="media-object" src="~/Image/@item.idea_ImageName" alt="img">
+                                                            </a>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading"><a href="#">@item.idea_Title</a></h4>
+                                                        </div>
+                                                    </div>
+
+                                                }
+                                                else
+                                                {
+                                                    break;
+                                                }
+                                                iPopular++;
+
+                                            }
+                                        }
+
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                                <!-- end single sidebar -->
+
+                            </aside>
+                            <!-- / end sidebar -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+</script>
